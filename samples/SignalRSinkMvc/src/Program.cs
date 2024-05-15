@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.SignalR;
 using Serilog;
 using Serilog.Sinks.SignalR;
 using Serilog.Sinks.SignalR.Extensions;
@@ -11,10 +12,10 @@ builder.Services.AddSignalR();
 // Required to register SignalR Hub for Serilog use
 builder.Services.AddSerilogHub<SampleHub>();
 builder.Services.AddSerilog((serviceProvider, loggerConfiguration) => 
-{
-    loggerConfiguration.WriteTo
-        .SignalR<SampleHub>(serviceProvider, "ReceiveMessage", null);
-});
+    loggerConfiguration.WriteTo.SignalR<SampleHub>(
+        serviceProvider, 
+        (context, message) => context.Clients.All.SendAsync("ReceiveMessage", message)
+    ));
 
 var app = builder.Build();
 
