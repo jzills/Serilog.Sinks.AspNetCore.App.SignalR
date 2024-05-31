@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Serilog.Sinks.AspNetCore.SignalR</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Joshua Zillwood</Authors>
+    <Description>A very simple SignalR sink for Serilog.</Description>
+    <Company></Company>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <ProjectUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.SignalR</ProjectUrl>
+    <RepositoryUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.SignalR.git</RepositoryUrl> 
+    <RepositoryType>git</RepositoryType> 
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../resources/icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>  
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />  
+  </ItemGroup> 
+
+  <ItemGroup>
+    <PackageReference Include="serilog" Version="3.1.1" />
+  </ItemGroup>
+
+</Project>
