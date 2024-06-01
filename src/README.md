@@ -14,6 +14,7 @@
                         context.Clients.All.SendAsync("Receive", message)
                 ));
 
+
 - Don't forget to register the `Hub`
 
         app.MapHub<SampleHub>("/sample");

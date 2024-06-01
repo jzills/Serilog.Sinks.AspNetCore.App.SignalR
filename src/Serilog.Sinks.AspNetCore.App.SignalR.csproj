@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>Serilog.Sinks.AspNetCore.App.SignalR</PackageId>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>Joshua Zillwood</Authors>
     <Description>A very simple SignalR sink for Serilog.</Description>
     <Company></Company>
