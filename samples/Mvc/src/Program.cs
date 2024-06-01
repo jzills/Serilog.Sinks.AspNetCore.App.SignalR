@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 using Serilog;
-using Serilog.Sinks.AspNetCore.SignalR.Extensions;
+using Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
 using Web.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);

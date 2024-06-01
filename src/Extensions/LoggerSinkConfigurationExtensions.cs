@@ -2,7 +2,7 @@ using Serilog.Configuration;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Serilog.Sinks.AspNetCore.SignalR.Extensions;
+namespace Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
 
 public static class LoggerSinkConfigurationExtensions
 {

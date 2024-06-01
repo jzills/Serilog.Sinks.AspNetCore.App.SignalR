@@ -7,15 +7,15 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Serilog.Sinks.AspNetCore.SignalR</PackageId>
+    <PackageId>Serilog.Sinks.AspNetCore.App.SignalR</PackageId>
     <Version>0.0.1</Version>
     <Authors>Joshua Zillwood</Authors>
     <Description>A very simple SignalR sink for Serilog.</Description>
     <Company></Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <ProjectUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.SignalR</ProjectUrl>
-    <RepositoryUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.SignalR.git</RepositoryUrl> 
+    <ProjectUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR</ProjectUrl>
+    <RepositoryUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR.git</RepositoryUrl> 
     <RepositoryType>git</RepositoryType> 
     <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
@@ -33,7 +33,7 @@
   </ItemGroup> 
 
   <ItemGroup>
-    <PackageReference Include="serilog" Version="3.1.1" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

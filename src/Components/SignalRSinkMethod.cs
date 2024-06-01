@@ -2,7 +2,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace Serilog.Sinks.AspNetCore.SignalR;
+namespace Serilog.Sinks.AspNetCore.App.SignalR;
 
 public class SignalRSinkMethod<THub> : SignalRSinkBase<THub>, ILogEventSink where THub : Hub
 {

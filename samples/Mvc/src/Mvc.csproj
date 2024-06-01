@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../../src/Serilog.Sinks.AspNetCore.SignalR.csproj" />
+    <ProjectReference Include="../../../src/Serilog.Sinks.AspNetCore.App.SignalR.csproj" />
   </ItemGroup>
 
 </Project>

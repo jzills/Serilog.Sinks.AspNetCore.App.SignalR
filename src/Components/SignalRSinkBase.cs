@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 
-namespace Serilog.Sinks.AspNetCore.SignalR;
+namespace Serilog.Sinks.AspNetCore.App.SignalR;
 
 public class SignalRSinkBase<THub> where THub : Hub
 {
