@@ -5,7 +5,7 @@
 
 ## Summary
 
-An easy to use Serilog sink for SignalR.
+An easy-to-use Serilog sink that enables logging to SignalR in ASP.NET Core applications.
 
 ## Usage
 
