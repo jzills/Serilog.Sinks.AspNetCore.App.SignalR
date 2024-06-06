@@ -10,7 +10,7 @@
 
   <PropertyGroup>
     <PackageId>Serilog.Sinks.AspNetCore.App.SignalR</PackageId>
-    <Version>0.0.2</Version>
+    <Version>1.0.0</Version>
     <Authors>Joshua Zillwood</Authors>
     <Description>An easy-to-use Serilog sink that enables logging to SignalR in ASP.NET Core applications.</Description>
     <Company></Company>
