@@ -13,7 +13,7 @@ This sample configures a client connection to the registered SignalR `Hub`. This
 
 The client `Hub` connection registers the `ReceiveMessage` event and appends messages sent by the SignalR `Hub`. The `Hub` is essentially a proxy that the Serilog sink communicates through.
 
-    hub.on("ReceiveMessage", message => {
+    hub.on("ReceiveEvent", (message, event) => {
         const tr = document.createElement("tr");
         const td = document.createElement("td");
         td.textContent = message;
