@@ -1,22 +1,20 @@
 
 ## Usage
 
-- Call `AddSerilogHub` to register a `Hub` to be recognized by the Serilog sink.
-- Call `AddSerilog` and configure the `Hub` to log events to.
-- Pass the `IServiceProvider` and the `Hub` method to be used to write out the events.
+Call the `IServiceCollection` extension method `AddSerilogHub` to register a SignalR `Hub` with the Serilog sink. This step is necessary in order to prevent circular dependencies caused during logger initialization.
 
-        builder.Services.AddSerilogHub<SampleHub>();
-        builder.Services.AddSerilog(
-            (serviceProvider, loggerConfiguration) => 
-                loggerConfiguration.WriteTo.SignalR<SampleHub>(
-                    serviceProvider, 
-                    (context, message) => 
-                        context.Clients.All.SendAsync("Receive", message)
-                ));
+    builder.Services.AddSerilogHub<SampleHub>();
 
+Call `AddSerilog` and configure the `Hub` in which events should be logged to. Make sure to pass the `IServiceProvider` down to the SignalR sink. The delegate provides the `IHubContext` for the `Hub` specified in the generic type parameter of the SignalR sink and the formatted Serilog event message.
 
-- Don't forget to register the `Hub`
+    builder.Services.AddSerilog(
+        (serviceProvider, loggerConfiguration) => 
+            loggerConfiguration.WriteTo.SignalR<SampleHub>(
+                serviceProvider, 
+                (context, message) => 
+                    context.Clients.All.SendAsync("Receive", message)
+            ));
 
-        app.MapHub<SampleHub>("/sample");
+Lastly, make sure to register the `Hub`.
 
-
+    app.MapHub<SampleHub>("/sample");

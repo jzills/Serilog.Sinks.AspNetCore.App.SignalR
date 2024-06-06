@@ -1,16 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>library</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageId>Serilog.Sinks.AspNetCore.App.SignalR</PackageId>
     <Version>0.0.2</Version>
     <Authors>Joshua Zillwood</Authors>
-    <Description>A very simple SignalR sink for Serilog.</Description>
+    <Description>An easy-to-use Serilog sink that enables logging to SignalR in ASP.NET Core applications.</Description>
     <Company></Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
