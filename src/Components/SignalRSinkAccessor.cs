@@ -13,7 +13,7 @@ namespace Serilog.Sinks.AspNetCore.App.SignalR;
 /// </typeparam>
 public class SignalRSinkAccessor<THub> : SignalRSinkBase<THub>, ILogEventSink where THub : Hub
 {
-    private readonly Func<IHubContext<THub>, string, Task> _hubMethodAccessor;
+    private readonly Func<IHubContext<THub>, string, LogEvent, Task> _hubMethodAccessor;
 
     /// <summary>
     /// Creates an instance of <c>SignalRSinkAccessor</c>.
@@ -23,12 +23,12 @@ public class SignalRSinkAccessor<THub> : SignalRSinkBase<THub>, ILogEventSink wh
     ///     </para>
     /// </summary>
     /// <param name="hub">A <c>LazyHub&lt;THub&gt;</c>.</param>
-    /// <param name="hubMethodAccessor">A <c>Func&lt;IHubContext&lt;THub&gt;, string, Task&gt;</c> used to access the SignalR <c>Hub</c> method to push log events to.</param>
+    /// <param name="hubMethodAccessor">A <c>Func&lt;IHubContext&lt;THub&gt;, string, LogEvent, Task&gt;</c> used to access the SignalR <c>Hub</c> method to push log events to.</param>
     /// <param name="formatProvider">An <c>IFormatProvider</c>.</param>
     /// <returns>An instance of <c>SignalRSinkAccessor</c>.</returns>
     public SignalRSinkAccessor(
         LazyHub<THub> hub,
-        Func<IHubContext<THub>, string, Task> hubMethodAccessor,
+        Func<IHubContext<THub>, string, LogEvent, Task> hubMethodAccessor,
         IFormatProvider? formatProvider
     ) : base(hub, formatProvider)
     {
@@ -43,6 +43,6 @@ public class SignalRSinkAccessor<THub> : SignalRSinkBase<THub>, ILogEventSink wh
     public void Emit(LogEvent logEvent)
     {
         var message = logEvent.RenderMessage(FormatProvider);
-        _hubMethodAccessor(Hub.Context, message).Wait();
+        _hubMethodAccessor(Hub.Context, message, logEvent).Wait();
     }
 }

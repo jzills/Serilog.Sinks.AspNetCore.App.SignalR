@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.SignalR;
 using Serilog;
 using Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
@@ -6,14 +7,16 @@ using Web.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddSignalR();
+builder.Services.AddSignalR()
+    .AddJsonProtocol(options => 
+        options.PayloadSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase);
 
 // Required to register SignalR Hub for Serilog use
 builder.Services.AddSerilogHub<SampleHub>();
 builder.Services.AddSerilog((serviceProvider, loggerConfiguration) => 
     loggerConfiguration.WriteTo.SignalR<SampleHub>(
         serviceProvider, 
-        (context, message) => context.Clients.All.SendAsync("ReceiveMessage", message)
+        (context, message, logEvent) => context.Clients.All.SendAsync("ReceiveEvent", message, logEvent)
     ));
 
 var app = builder.Build();

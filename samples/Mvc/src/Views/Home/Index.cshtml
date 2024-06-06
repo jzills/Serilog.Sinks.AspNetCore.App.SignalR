@@ -23,7 +23,8 @@
             .getElementById("event-table")
             .getElementsByTagName("tbody")[0];
 
-        hub.on("ReceiveMessage", message => {
+        hub.on("ReceiveEvent", (message, event) => {
+            debugger;
             const tr = document.createElement("tr");
             const td = document.createElement("td");
             td.textContent = message;

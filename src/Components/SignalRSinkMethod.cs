@@ -46,6 +46,6 @@ public class SignalRSinkMethod<THub> : SignalRSinkBase<THub>, ILogEventSink wher
     public void Emit(LogEvent logEvent)
     {
         var message = logEvent.RenderMessage(FormatProvider);
-        Hub.Context.Clients.All.SendAsync(_hubMethod, message).Wait();
+        Hub.Context.Clients.All.SendAsync(_hubMethod, message, logEvent).Wait();
     }
 }

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog.Configuration;
+using Serilog.Events;
 
 namespace Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
 
@@ -52,14 +53,14 @@ public static class LoggerSinkConfigurationExtensions
     /// </summary>
     /// <param name="loggerConfiguration">This instance of <c>LoggerSinkConfiguration</c>.</param>
     /// <param name="serviceProvider">An <c>IServiceProvider</c>.</param>
-    /// <param name="hubMethodAccessor">A <c>Func&lt;IHubContext&lt;THub&gt;, string, Task&gt;</c> used to access the SignalR <c>Hub</c> method to push log events to.</param>
+    /// <param name="hubMethodAccessor">A <c>Func&lt;IHubContext&lt;THub&gt;, string, LogEvent, Task&gt;</c> used to access the SignalR <c>Hub</c> method to push log events to.</param>
     /// <param name="formatProvider">An <c>IFormatProvider</c></param>
     /// <typeparam name="THub">>A SignalR <c>Hub</c>.</typeparam>
     /// <returns>A <c>LoggerConfiguration</c> for chaining subsequent calls.</returns>
     public static LoggerConfiguration SignalR<THub>(
         this LoggerSinkConfiguration loggerConfiguration,
         IServiceProvider serviceProvider,
-        Func<IHubContext<THub>, string, Task> hubMethodAccessor,
+        Func<IHubContext<THub>, string, LogEvent, Task> hubMethodAccessor,
         IFormatProvider? formatProvider = null
     ) where THub : Hub => 
         loggerConfiguration.Sink(
