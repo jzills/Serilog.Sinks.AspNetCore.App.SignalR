@@ -1,8 +1,8 @@
 using System.Text.Json;
 using Microsoft.AspNetCore.SignalR;
+using Mvc.Hubs;
 using Serilog;
 using Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
-using Web.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 

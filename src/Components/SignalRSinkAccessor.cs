@@ -13,6 +13,9 @@ namespace Serilog.Sinks.AspNetCore.App.SignalR;
 /// </typeparam>
 public class SignalRSinkAccessor<THub> : SignalRSinkBase<THub>, ILogEventSink where THub : Hub
 {
+    /// <summary>
+    /// A delegate representing the callback for handling Serilog events.
+    /// </summary>
     private readonly Func<IHubContext<THub>, string, LogEvent, Task> _hubMethodAccessor;
 
     /// <summary>

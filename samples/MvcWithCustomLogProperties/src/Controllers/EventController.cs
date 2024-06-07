@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Mvc.Controllers;
+namespace MvcWithCustomLogProperties.Controllers;
 
 public class EventController : Controller
 {

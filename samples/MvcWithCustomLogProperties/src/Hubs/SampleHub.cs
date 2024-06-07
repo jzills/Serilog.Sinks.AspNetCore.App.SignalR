@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 
-namespace Mvc.Hubs;
+namespace MvcWithCustomLogProperties.Hubs;
 
 public class SampleHub : Hub
 {

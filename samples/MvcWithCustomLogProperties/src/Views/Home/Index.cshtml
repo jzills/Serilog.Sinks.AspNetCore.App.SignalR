@@ -1,0 +1,45 @@
+﻿<div> 
+    <div class="description-container">
+        Duplicate this tab to see some events get logged here.
+    </div>
+    <div>
+        <table id="event-table">
+            <tr>
+                <th>
+                    Event
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    $(() => {
+        const hub = new signalR.HubConnectionBuilder()
+            .withUrl("https://localhost:7110/sample")
+            .configureLogging(signalR.LogLevel.Debug)
+            .build();
+
+        const tbody = document
+            .getElementById("event-table")
+            .getElementsByTagName("tbody")[0];
+
+        hub.on("LogUser", (message, name, email) => {
+            const tr = document.createElement("tr");
+            const messageTd = document.createElement("td");
+            messageTd.textContent = message;
+
+            const nameTd = document.createElement("td");
+            nameTd.textContent = name;
+
+            const emailTd = document.createElement("td");
+            emailTd.textContent = email;
+
+            tr.appendChild(messageTd);
+            tr.appendChild(nameTd);
+            tr.appendChild(emailTd);
+            tbody.append(tr);
+        });
+
+        hub.start();
+    })
+</script>
