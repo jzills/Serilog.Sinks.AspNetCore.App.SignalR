@@ -4,10 +4,19 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
 
 /// <summary>
-/// A class representing extension methods for <c>IServiceCollection</c>.
+/// A <c>class</c> representing extension methods for <c>IServiceCollection</c>.
 /// </summary>
 public static class IServiceCollectionExtensions
 {
+    /// <summary>
+    /// Registers the default SignalR <c>Hub</c> for Serilog event logging.
+    /// </summary>
+    /// <param name="services">An <c>IServiceCollection</c>.</param>
+    /// <returns>An <c>IServiceCollection</c>.</returns>
+    public static IServiceCollection AddDefaultSerilogHub(
+        this IServiceCollection services
+    ) => services.AddSerilogHub<DefaultSerilogHub>();
+
     /// <summary>
     /// Registers <c>THub</c> as a <c>LazyHub</c> which is a very simple wrapper around an <c>IHubContext</c>. 
     /// This is to prevent circular dependencies during logger initialization.

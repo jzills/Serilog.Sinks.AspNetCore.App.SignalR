@@ -1,5 +1,9 @@
 # Mvc Sample
 
+This is a sample project to demonstrate how to setup Serilog event logging to a user defined SignalR `Hub`.
+
+#### Note
+
 For information on configuring the `Program.cs`, visit [here](../../src/README.md).
 
 ## Usage
@@ -11,7 +15,7 @@ This sample configures a client connection to the registered SignalR `Hub`. This
         .configureLogging(signalR.LogLevel.Debug)
         .build();
 
-The client `Hub` connection registers the `ReceiveMessage` event and appends messages sent by the SignalR `Hub`. The `Hub` is essentially a proxy that the Serilog sink communicates through.
+The client `Hub` connection registers the `ReceiveEvent` event and appends messages sent by the SignalR `Hub`. The `Hub` is essentially a proxy that the Serilog sink communicates through.
 
     hub.on("ReceiveEvent", (message, event) => {
         const tr = document.createElement("tr");

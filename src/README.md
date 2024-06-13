@@ -1,5 +1,44 @@
 
-## Usage
+# Serilog.Sinks.AspNetCore.App.SignalR
+
+[![NuGet Version](https://img.shields.io/nuget/v/Serilog.Sinks.AspNetCore.App.SignalR.svg)](https://www.nuget.org/packages/Serilog.Sinks.AspNetCore.App.SignalR/) [![NuGet Downloads](https://img.shields.io/nuget/dt/Serilog.Sinks.AspNetCore.App.SignalR.svg)](https://www.nuget.org/packages/Serilog.Sinks.AspNetCore.App.SignalR/) 
+
+- [Quickstart](#quickstart)
+    * [Register with default hub](#register-with-default-hub)
+    * [Register with user defined hub](#register-with-user-defined-hub)
+
+# Quickstart
+
+A short and sweet overview of how to register `Serilog.Sinks.AspNetCore.App.SignalR` to help you get up and running. There are a few methods of dependency injection registration. You should choose the one appropriate for your situation and how much flexibility you might require.
+
+## Register with default hub
+
+This is by far the simplest way to integrate Serilog with SignalR. Add a call to the `IServiceCollection` extension method `AddDefaultSerilogHub`. This will register the internal SignalR `Hub` from this package.
+
+    // Register the default SignalR Hub for Serilog.
+    builder.Services.AddDefaultSerilogHub();
+
+Then, configure the logger by passing the method name that the SignalR client is listening to.
+
+    builder.Services.AddSerilog((serviceProvider, loggerConfiguration) => 
+        loggerConfiguration.WriteTo.SignalR(
+            serviceProvider, 
+            "ReceiveEvent"
+        ));
+
+Finally, call the `WebApplication` extension method `MapDefaultSerilogHub` and specify the route for the internal, default `Hub`.
+
+    app.MapDefaultSerilogHub("/sample");
+
+A client can now listen on the `Hub` route for the specified method where the formatted message will be sent.
+
+    hub.on("ReceiveEvent", (message) => {...});
+
+Additionally, the Serilog `LogEvent` is also passed as an optional second parameter.
+
+    hub.on("ReceiveEvent", (message, logEvent) => {...});
+
+## Register with user defined hub
 
 Call the `IServiceCollection` extension method `AddSerilogHub` to register a SignalR `Hub` with the Serilog sink. This step is necessary in order to prevent circular dependencies caused during logger initialization.
 

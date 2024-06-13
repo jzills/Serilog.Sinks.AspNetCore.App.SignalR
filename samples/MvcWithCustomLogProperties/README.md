@@ -1,24 +1,36 @@
-# Mvc Sample
+# MvcWithWithCustomLogProperties Sample
+
+This is a sample project demonstrating how custom properties in a Serilog `LogEvent` can be retrieved in a SignalR `Hub`.
+
+#### Note
 
 For information on configuring the `Program.cs`, visit [here](../../src/README.md).
 
 ## Usage
 
-This sample configures a client connection to the registered SignalR `Hub`. This code can be found [here](./src/Views/Home/Index.cshtml).
+See [here](../Mvc/README.md) for initial setup details. The only difference is that we are utilizing the Serilog `LogEvent` that is passed to our SignalR `Hub`.
 
-    const hub = new signalR.HubConnectionBuilder()
-        .withUrl("https://localhost:7110/sample")
-        .configureLogging(signalR.LogLevel.Debug)
-        .build();
-
-The client `Hub` connection registers the `LogUser` event and appends messages sent by the SignalR `Hub`. The `Hub` is essentially a proxy that the Serilog sink communicates through.
-
-    hub.on("LogUser", (message, name, email) => {
-        ...
-    });
-
-Finally, the connection is made.
-
-    hub.start();
-
-When the sample project has loaded in the browser, duplicate the tab to watch events being logged in the first tab.
+    builder.Services.AddSerilog((serviceProvider, loggerConfiguration) => 
+        loggerConfiguration.WriteTo.SignalR<SampleHub>(
+            serviceProvider, 
+            (context, message, logEvent) =>
+            {
+                // Only push events with our custom properties
+                var properties = logEvent.Properties;
+                if (properties.TryGetValue("Name",  out var nameProperty) &&
+                    properties.TryGetValue("Email", out var emailProperty))
+                {
+                    string name  = // Write property value
+                    string email = // Write property value
+                    
+                    // Push the formatted message with our custom properties
+                    return context.Clients.All.SendAsync(
+                        "LogUser", 
+                        message, 
+                        name, 
+                        email
+                    );
+                }
+                ...
+            }
+        ));
