@@ -51,7 +51,7 @@ Call `AddSerilog` and configure the `Hub` in which events should be logged to. M
             loggerConfiguration.WriteTo.SignalR<SampleHub>(
                 serviceProvider, 
                 (context, message, logEvent) => 
-                    context.Clients.All.SendAsync("Receive", message, logEvent)
+                    context.Clients.All.SendAsync("ReceiveEvent", message, logEvent)
             ));
 
 Lastly, make sure to register the `Hub`.

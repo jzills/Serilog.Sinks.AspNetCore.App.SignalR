@@ -15,7 +15,8 @@ An easy-to-use Serilog sink that enables logging to SignalR in ASP.NET Core appl
 
 ## Features
 
-TODO
+- Support for user defined `Hub` instances through `IHubContext`.
+- An internal Serilog `Hub` with automatic registration.
 
 ## Installation
 
