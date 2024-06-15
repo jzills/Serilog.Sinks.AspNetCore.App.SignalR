@@ -25,3 +25,11 @@ body {
   margin: 25px;
   text-align: center;
 }
+
+#event-table {
+  width: 100%;
+}
+
+#event-table tr {
+  text-align: center;
+}

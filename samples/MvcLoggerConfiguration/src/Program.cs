@@ -22,25 +22,25 @@ builder.Services.AddSerilog((serviceProvider, loggerConfiguration) =>
 // Method 2
 // Register your own hub for Serilog and specify the hub method
 // used to push events.
-builder.Services.AddSerilogHub<SampleHub>();
-builder.Services.AddSerilog((serviceProvider, loggerConfiguration) =>
-    loggerConfiguration.WriteTo.SignalR<SampleHub>(
-        serviceProvider, 
-        "ReceiveEvent"
-    ));
+// builder.Services.AddSerilogHub<SampleHub>();
+// builder.Services.AddSerilog((serviceProvider, loggerConfiguration) =>
+//     loggerConfiguration.WriteTo.SignalR<SampleHub>(
+//         serviceProvider, 
+//         "ReceiveEvent"
+//     ));
 
 // Method 3
 // Register your own hub for Serilog and define the delegate
 // to push events. This allows the most flexibility as you have
 // direct access to the context representing the specified hub. There is
 // also an overload that accepts the Serilog event for further processing.
-builder.Services.AddSerilogHub<SampleHub>();
-builder.Services.AddSerilog((serviceProvider, loggerConfiguration) =>
-    loggerConfiguration.WriteTo.SignalR<SampleHub>(
-        serviceProvider, 
-        (context, message) => context.Clients.All.SendAsync("ReceiveEvent", message)
-        //(context, message, logEvent) => context.Clients.All.SendAsync("ReceiveEvent", message, logEvent)
-    ));
+// builder.Services.AddSerilogHub<SampleHub>();
+// builder.Services.AddSerilog((serviceProvider, loggerConfiguration) =>
+//     loggerConfiguration.WriteTo.SignalR<SampleHub>(
+//         serviceProvider, 
+//         (context, message) => context.Clients.All.SendAsync("ReceiveEvent", message)
+//         //(context, message, logEvent) => context.Clients.All.SendAsync("ReceiveEvent", message, logEvent)
+//     ));
 
 var app = builder.Build();
 
@@ -57,7 +57,7 @@ app.UseAuthorization();
 app.MapDefaultSerilogHub("/sample");
 
 // Method 2 & 3
-app.MapHub<SampleHub>("/sample");
+//app.MapHub<SampleHub>("/sample");
 
 app.MapControllerRoute(
     name: "default",
