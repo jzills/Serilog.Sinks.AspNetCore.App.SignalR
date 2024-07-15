@@ -13,10 +13,13 @@ A short and sweet overview of how to register `Serilog.Sinks.AspNetCore.App.Sign
 
 ## Register with default hub
 
-This is by far the simplest way to integrate Serilog with SignalR. Add a call to the `IServiceCollection` extension method `AddDefaultSerilogHub`. This will register the internal SignalR `Hub` from this package.
+This is by far the simplest way to integrate Serilog with SignalR. Add a call to the `IServiceCollection` extension method `AddDefaultSerilogHub`. This will register the `DefaultSerilogHub` from this package.
 
     // Register the default SignalR Hub for Serilog.
     builder.Services.AddDefaultSerilogHub();
+
+> [!NOTE]
+> The `DefaultSerilogHub` is just an empty class that inherits from `Microsoft.AspNetCore.SignalR.Hub`. 
 
 Then, configure the logger by passing the method name that the SignalR client is listening to.
 
@@ -26,7 +29,7 @@ Then, configure the logger by passing the method name that the SignalR client is
             "ReceiveEvent"
         ));
 
-Finally, call the `WebApplication` extension method `MapDefaultSerilogHub` and specify the route for the internal, default `Hub`.
+Finally, call the `WebApplication` extension method `MapDefaultSerilogHub` and specify the route for the `DefaultSerilogHub`.
 
     app.MapDefaultSerilogHub("/sample");
 
@@ -40,7 +43,10 @@ Additionally, the Serilog `LogEvent` is also passed as an optional second parame
 
 ## Register with user defined hub
 
-Call the `IServiceCollection` extension method `AddSerilogHub` to register a SignalR `Hub` with the Serilog sink. This step is necessary in order to prevent circular dependencies caused during logger initialization.
+Call the `IServiceCollection` extension method `AddSerilogHub` to register a SignalR `Hub` with the Serilog sink. 
+
+> [!IMPORTANT]
+> This step is necessary in order to prevent circular dependencies caused during logger initialization.
 
     builder.Services.AddSerilogHub<SampleHub>();
 
