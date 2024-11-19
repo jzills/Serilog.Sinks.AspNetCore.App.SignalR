@@ -2,3 +2,5 @@
 .DS_Store
 **bin
 **obj
+
+Serilog.Sinks.SignalR.sln

@@ -20,6 +20,8 @@
     <RepositoryUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR.git</RepositoryUrl> 
     <RepositoryType>git</RepositoryType> 
     <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>serilog;sinks;signalR</PackageTags>
+    <Copyright>Copyright © Joshua Zillwood</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
