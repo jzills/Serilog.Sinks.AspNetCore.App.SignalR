@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog.Configuration;
 using Serilog.Events;
@@ -10,6 +11,40 @@ namespace Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
 /// </summary>
 public static class LoggerSinkConfigurationExtensions
 {
+    /// <summary>
+    /// Configures Serilog to use the SignalR sink with settings retrieved from the provided <see cref="IConfiguration"/>.
+    /// </summary>
+    /// <param name="loggerConfiguration">The <see cref="LoggerSinkConfiguration"/> to extend.</param>
+    /// <param name="serviceProvider">The <see cref="IServiceProvider"/> used to resolve dependencies.</param>
+    /// <param name="configuration">The <see cref="IConfiguration"/> containing the SignalR sink settings.</param>
+    /// <returns>The updated <see cref="LoggerConfiguration"/> instance.</returns>
+    /// <exception cref="ArgumentException">
+    /// Thrown if the SignalR configuration section is not found in the "WriteTo" property,
+    /// or if the required "HubMethod" argument is missing or empty.
+    /// </exception>
+    public static LoggerConfiguration SignalR(
+        this LoggerSinkConfiguration loggerConfiguration,
+        IServiceProvider serviceProvider,
+        IConfiguration configuration
+    ) 
+    {
+        var writeToConfig = configuration.GetSection("Serilog:WriteTo");
+        var signalRConfig = writeToConfig.GetChildren().FirstOrDefault(x => x["Name"] == "SignalR");
+
+        if (signalRConfig == null)
+        {
+            throw new ArgumentException($"SignalR configuration not found in the \"WriteTo\" property of {nameof(IConfiguration)}.");
+        }
+
+        var hubMethod = signalRConfig["Args:HubMethod"];
+        if (string.IsNullOrWhiteSpace(hubMethod))
+        {
+            throw new ArgumentException("Hub method must be specified either in configuration or as a parameter.");
+        }
+
+        return loggerConfiguration.SignalR(serviceProvider, hubMethod, null);
+    }
+            
     /// <summary>
     /// Registers an instance of <c>DefaultSerilogHub</c> to handle Serilog communication with SignalR.
     /// </summary>
