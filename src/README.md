@@ -6,6 +6,7 @@
 - [Quickstart](#quickstart)
     * [Register with default hub](#register-with-default-hub)
     * [Register with user defined hub](#register-with-user-defined-hub)
+    * [Register with configuration](#register-with-configuration)
 
 # Quickstart
 
@@ -63,3 +64,35 @@ Call `AddSerilog` and configure the `Hub` in which events should be logged to. M
 Lastly, make sure to register the `Hub`.
 
     app.MapHub<SampleHub>("/sample");
+
+## Register with configuration
+
+The setup for this method is the same as [registering a default hub](#register-with-default-hub). The only difference is the call to `AddSerilog` where an `IConfiguration` is utilized.
+
+    services.AddSerilog((serviceProvider, options) => 
+    {
+        var config = serviceProvider.GetRequiredService<IConfiguration>();
+        options.ReadFrom.Configuration(config)
+            .WriteTo.SignalR(serviceProvider, config);
+    });
+
+The expected format for configuration is as follows.
+
+    {
+        "Serilog": {
+            "Using": [
+                "Serilog.Sinks.AspNetCore.App.SignalR"
+            ],
+            "WriteTo": [
+                {
+                    "Name": "SignalR",
+                    "Args": {
+                        "HubMethod": "ReceiveLogEvent"
+                    }
+                }
+            ]
+        }
+    }
+
+> [!NOTE]
+> The only available argument for configuration at this moment is the hub method name.
