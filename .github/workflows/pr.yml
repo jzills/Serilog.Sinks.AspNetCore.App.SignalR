@@ -1,0 +1,56 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Restore
+        working-directory: ./test/Unit
+        run: dotnet restore
+
+      - name: Build
+        working-directory: ./test/Unit
+        run: dotnet build --no-restore
+
+      - name: Test
+        working-directory: ./test/Unit
+        run: dotnet test --no-build --verbosity normal
+
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+
+      - name: Restore
+        working-directory: ./test/Integration
+        run: dotnet restore
+
+      - name: Build
+        working-directory: ./test/Integration
+        run: dotnet build --no-restore
+
+      - name: Test
+        working-directory: ./test/Integration
+        run: dotnet test --no-build --verbosity normal
