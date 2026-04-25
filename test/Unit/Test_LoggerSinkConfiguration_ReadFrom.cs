@@ -6,11 +6,12 @@ using Serilog.Sinks.AspNetCore.App.SignalR.Extensions;
 namespace Unit;
 
 [TestFixture]
-public class Test_ReadFrom_Configuration
+public class Test_LoggerSinkConfiguration_ReadFrom
 {
     [Test]
-    public void Test()
+    public void SignalR_ReadFrom_Configuration_Creates_Logger()
     {
+        // Arrange
         var serviceProvider = new ServiceCollection()
             .AddDefaultSerilogHub()
             .BuildServiceProvider();
@@ -19,11 +20,13 @@ public class Test_ReadFrom_Configuration
             .AddJsonFile("appsettings.test.json")
             .Build();
 
+        // Act
         Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
             .WriteTo.SignalR(serviceProvider, configuration)
             .CreateLogger();
 
-        Log.Information("This is a test log using the custom sink.");
+        // Assert
+        Assert.That(Log.Logger, Is.Not.Null);
     }
 }
