@@ -31,3 +31,22 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag "v${{ steps.version.outputs.value }}"
           git push origin "v${{ steps.version.outputs.value }}"
+
+  merge-back:
+    name: Merge Release Back to Develop
+    runs-on: ubuntu-latest
+    needs: tag
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Open PR to merge release branch back into develop
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_URL=$(gh pr create \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "chore: merge ${{ github.event.pull_request.head.ref }} back into develop" \
+            --body "Automated post-release merge. Brings release fixes and merge commits from \`${{ github.event.pull_request.head.ref }}\` back into \`develop\` to keep branches in sync per gitflow." \
+            --base develop \
+            --head "${{ github.event.pull_request.head.ref }}")
+          gh pr merge "$PR_URL" --merge --auto
