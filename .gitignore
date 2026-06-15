@@ -4,3 +4,6 @@
 **obj
 
 Serilog.Sinks.SignalR.sln
+
+.superpowers/
+docs/superpowers/
