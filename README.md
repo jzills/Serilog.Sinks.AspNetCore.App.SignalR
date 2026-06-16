@@ -14,7 +14,11 @@
 
 An easy-to-use Serilog sink that enables logging to SignalR in ASP.NET Core applications.
 
+</div>
+
 ## Features
+
+<div align="center">
 
 <table>
   <tr>
