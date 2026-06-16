@@ -16,27 +16,6 @@ An easy-to-use Serilog sink that enables logging to SignalR in ASP.NET Core appl
 
 </div>
 
-## Features
-
-<div align="center">
-
-<table>
-  <tr>
-    <td>✓ User-defined Hub support</td>
-    <td>✓ Built-in DefaultSerilogHub</td>
-  </tr>
-  <tr>
-    <td>✓ Lazy DI resolution</td>
-    <td>✓ appsettings.json config</td>
-  </tr>
-  <tr>
-    <td>✓ net8.0 + net9.0</td>
-    <td>✓ Delegate overloads</td>
-  </tr>
-</table>
-
-</div>
-
 ## Installation
 
     dotnet add package Serilog.Sinks.AspNetCore.App.SignalR
