@@ -2,12 +2,14 @@
   <img src="resources/serilog-banner.svg" alt="Serilog.Sinks.AspNetCore.App.SignalR" width="100%" />
 </div>
 
+<br>
+
 <div align="center">
-  
+
 [![NuGet Version](https://img.shields.io/nuget/v/Serilog.Sinks.AspNetCore.App.SignalR.svg)](https://www.nuget.org/packages/Serilog.Sinks.AspNetCore.App.SignalR/)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Serilog.Sinks.AspNetCore.App.SignalR.svg)](https://www.nuget.org/packages/Serilog.Sinks.AspNetCore.App.SignalR/)
 ![Target Frameworks](https://img.shields.io/badge/targets-net8.0%20%7C%20net9.0-informational)
-  
+
 </div>
 
 <div align="center">
