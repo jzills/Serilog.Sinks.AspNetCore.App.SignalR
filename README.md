@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="resources/serilog-banner.svg" alt="Serilog.Sinks.AspNetCore.App.SignalR" width="800" />
+  <img src="resources/serilog-banner.svg" alt="Serilog.Sinks.AspNetCore.App.SignalR" width="100%" />
 </div>
 
 <div align="center">
@@ -10,15 +10,28 @@
 
 </div>
 
+<div align="center">
+
 An easy-to-use Serilog sink that enables logging to SignalR in ASP.NET Core applications.
 
 ## Features
 
-| | |
-|---|---|
-| ✓ User-defined Hub support | ✓ Built-in DefaultSerilogHub |
-| ✓ Lazy DI resolution | ✓ appsettings.json config |
-| ✓ net8.0 + net9.0 | ✓ Delegate overloads |
+<table>
+  <tr>
+    <td>✓ User-defined Hub support</td>
+    <td>✓ Built-in DefaultSerilogHub</td>
+  </tr>
+  <tr>
+    <td>✓ Lazy DI resolution</td>
+    <td>✓ appsettings.json config</td>
+  </tr>
+  <tr>
+    <td>✓ net8.0 + net9.0</td>
+    <td>✓ Delegate overloads</td>
+  </tr>
+</table>
+
+</div>
 
 ## Installation
 
