@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="../resources/Icon.png" Pack="true" PackagePath="" />
+    <None Include="../assets/Icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>  

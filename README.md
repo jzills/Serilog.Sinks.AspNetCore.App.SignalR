@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="resources/serilog-banner.svg" alt="Serilog.Sinks.AspNetCore.App.SignalR" width="100%" />
+  <img src="assets/banner.svg" alt="Serilog.Sinks.AspNetCore.App.SignalR" width="100%" />
 </div>
 
 <br>
