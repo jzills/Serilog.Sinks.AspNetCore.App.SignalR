@@ -1,8 +1,14 @@
 <div align="center">
-  <img src="assets/banner.svg" alt="Serilog.Sinks.AspNetCore.App.SignalR" width="100%" />
+  <img src="assets/banner.svg" alt="Serilog.Sinks.AspNetCore.App.SignalR" width="800"/>
 </div>
 
 <br>
+
+<div align="center">
+
+# Serilog.Sinks.AspNetCore.App.SignalR
+
+</div>
 
 <div align="center">
 
