@@ -16,8 +16,8 @@
     <Company></Company>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR.git</RepositoryUrl> 
+    <PackageProjectUrl>https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr.git</RepositoryUrl> 
     <RepositoryType>git</RepositoryType> 
     <PackageIcon>Icon.png</PackageIcon>
     <PackageTags>serilog;sinks;signalR</PackageTags>

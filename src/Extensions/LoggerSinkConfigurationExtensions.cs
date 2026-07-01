@@ -76,8 +76,8 @@ public static class LoggerSinkConfigurationExtensions
     ///         The specified SignalR <c>Hub</c> method is called when Serilog writes out events.
     ///     </para>
     ///     <para>
-    ///         Usage examples can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
-    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/src/Components/LazyHubs">here</see>.
+    ///         Usage examples can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
+    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/src/Components/LazyHubs">here</see>.
     ///     </para>
     /// </summary>
     /// <param name="loggerConfiguration">This instance of <c>LoggerSinkConfiguration</c>.</param>
@@ -106,8 +106,8 @@ public static class LoggerSinkConfigurationExtensions
     ///         The specified SignalR <c>Hub</c> method is called when Serilog writes out events.
     ///     </para>
     ///     <para>
-    ///         Usage examples can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
-    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/src/Components/LazyHubs">here</see>.
+    ///         Usage examples can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
+    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/src/Components/LazyHubs">here</see>.
     ///     </para>
     /// </summary>
     /// <param name="loggerConfiguration">This instance of <c>LoggerSinkConfiguration</c>.</param>
@@ -136,8 +136,8 @@ public static class LoggerSinkConfigurationExtensions
     ///         The specified SignalR <c>Hub</c> method is called when Serilog writes out events.
     ///     </para>
     ///     <para>
-    ///         Usage examples can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
-    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/src/Components/LazyHubs">here</see>.
+    ///         Usage examples can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
+    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/src/Components/LazyHubs">here</see>.
     ///     </para>
     /// </summary>
     /// <param name="loggerConfiguration">This instance of <c>LoggerSinkConfiguration</c>.</param>

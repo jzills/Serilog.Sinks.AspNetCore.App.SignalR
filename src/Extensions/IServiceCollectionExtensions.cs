@@ -21,8 +21,8 @@ public static class IServiceCollectionExtensions
     /// Registers <c>THub</c> as a <c>LazyHub</c> which is a very simple wrapper around an <c>IHubContext</c>. 
     /// This is to prevent circular dependencies during logger initialization.
     ///     <para>
-    ///         Usage examples can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
-    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/src/Components/LazyHubs">here</see>.
+    ///         Usage examples can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
+    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/src/Components/LazyHubs">here</see>.
     ///     </para>
     /// </summary>
     /// <param name="services">A <c>IServiceCollection</c>.</param>
@@ -41,8 +41,8 @@ public static class IServiceCollectionExtensions
     /// Registers <c>THub</c> as a <c>LazyHub</c> which is a very simple wrapper around an <c>IHubContext</c>. 
     /// This is to prevent circular dependencies during logger initialization.
     ///     <para>
-    ///         Usage examples can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
-    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/Serilog.Sinks.AspNetCore.App.SignalR/tree/main/src/Components/LazyHubs">here</see>.
+    ///         Usage examples can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/samples/Mvc">here</see>, including complete code samples.<br />
+    ///         More details about the <c>LazyHub</c> implementation can be found <see href="https://github.com/jzills/serilog-sinks-aspnetcore-app-signalr/tree/main/src/Components/LazyHubs">here</see>.
     ///     </para>
     /// </summary>
     /// <param name="services">A <c>IServiceCollection</c>.</param>
